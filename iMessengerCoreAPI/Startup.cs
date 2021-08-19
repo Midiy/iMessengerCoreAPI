@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
+using iMessengerCoreAPI.Models;
+
 namespace iMessengerCoreAPI
 {
 #pragma warning disable CS1591 // Отсутствует комментарий XML для открытого видимого типа или члена
@@ -30,6 +32,10 @@ namespace iMessengerCoreAPI
                 string xmlDocPath = Path.Combine(AppContext.BaseDirectory, "iMessengerCoreAPI.xml");
                 c.IncludeXmlComments(xmlDocPath);
             });
+
+            // RGDialogsClients is expected to provide a general source of information about dialogs,
+            // so it is added as a singleton.
+            services.AddSingleton<RGDialogsClients>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

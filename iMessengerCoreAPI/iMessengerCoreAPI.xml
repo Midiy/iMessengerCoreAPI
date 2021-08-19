@@ -4,5 +4,39 @@
         <name>iMessengerCoreAPI</name>
     </assembly>
     <members>
+        <member name="T:iMessengerCoreAPI.Controllers.DialogsController">
+            <summary>
+            Controller provides methods to interact with dialogs.
+            </summary>
+        </member>
+        <member name="M:iMessengerCoreAPI.Controllers.DialogsController.#ctor(iMessengerCoreAPI.Models.RGDialogsClients)">
+            <summary>
+            Initializes a new instance of <see cref="T:iMessengerCoreAPI.Controllers.DialogsController"/> with specified data provider.
+            </summary>
+            <param name="dialogsClientsProvider"> The instance of <see cref="T:iMessengerCoreAPI.Models.RGDialogsClients"/> class provides dialogs data. </param>
+        </member>
+        <member name="M:iMessengerCoreAPI.Controllers.DialogsController.GetByClientsIDs(System.Collections.Generic.IEnumerable{System.Guid})">
+            <summary>
+            Returns ID of the dialog in which clients with each of the specified IDs are participating.
+            </summary>
+            <param name="clientsIDs"> Sequence of IDs of clients participating in dialog. </param>
+            <returns> 
+            Dialog's ID if dialog with all clients specified by <paramref name="clientsIDs"/> was found; <see cref="F:System.Guid.Empty"/> otherwise.
+            </returns>
+            <response code="200"> Returns dialog's ID or <see cref="F:System.Guid.Empty"/> </response>
+            <response code="400"> If <paramref name="clientsIDs"/> is null or empty. </response>
+        </member>
+        <member name="M:iMessengerCoreAPI.Extensions.IsSupersetFor``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Checks if sequence contains all elements of <paramref name="subset"/> by using the default equality comparer.
+            </summary>
+            <typeparam name="T"> Type of elements of both sequences. </typeparam>
+            <param name="superset"> Sequence which is expected to be superset for <paramref name="subset"/>. </param>
+            <param name="subset"> Sequence which is expected to be subset of <paramref name="superset"/>. </param>
+            <returns> 
+            <see langword="true"/> if <paramref name="superset"/> contains all elements of <paramref name="subset"/>; otherwise, <see langword="false"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
     </members>
 </doc>
